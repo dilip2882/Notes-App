@@ -5,12 +5,14 @@ const app = express();
 
 const mongoose = require("mongoose");
 
+app.use(express.json());
+
 app.use("/users", userRouter);
 app.use("/note", noteRouter);
 
 app.get("/", (req, res) => {
     res.send("hello")
-})
+});
 
 mongoose.connect("mongodb+srv://dspkids2092:<Y5hRiFKDwKimxCUR>@cluster0.55ozhm0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 .then(()=>{
