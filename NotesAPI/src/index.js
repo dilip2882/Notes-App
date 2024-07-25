@@ -1,27 +1,34 @@
 const express = require("express");
-const userRouter = require("./routes/userRoutes");
-const noteRouter = require("./routes/noteRoutes");
 const app = express();
+const noteRouter = require("./routes/noteRoutes");
+const userRouter = require("./routes/userRoutes"); 
+const dotenv = require("dotenv");
+const cors = require("cors");
+
+dotenv.config();
 
 const mongoose = require("mongoose");
 
 app.use(express.json());
 
+app.use(cors());
+
 app.use("/users", userRouter);
 app.use("/note", noteRouter);
 
-app.get("/", (req, res) => {
-    res.send("hello")
+app.get("/", (req, res) =>{
+    res.send("Notes API");
 });
 
-mongoose.connect("mongodb+srv://dspkids2092:<Y5hRiFKDwKimxCUR>@cluster0.55ozhm0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+const PORT = process.env.PORT || 5000;
+
+mongoose.connect(process.env.MONGO_URL)
 .then(()=>{
-    app.listen(5000, ()=>{
-        console.log("Server started on port no. 5000");
-    })
+    app.listen(PORT, ()=>{
+        console.log("Server started on port no. " + PORT);
+    });
 })
-.catch((errror)=>{
-    console.log(errror);
-});
-
+.catch((error)=>{
+    console.log(error);
+})
 
