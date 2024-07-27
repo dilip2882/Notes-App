@@ -48,7 +48,7 @@ const deleteNote = async (req, res) =>{
     const id = req.params.id;
     try {
         
-        const note = await noteModel.findByIdAndRemove(id);
+        const note = await noteModel.findByIdAndDelete(id);
         res.status(202).json(note);
 
     } catch (error) {
@@ -61,8 +61,9 @@ const getNotes = async (req, res) =>{
     try {
         
         const notes = await noteModel.find({userId : req.userId});
+        console.log("-------------- getNotes ---------------")
+        console.log(notes)
         res.status(200).json(notes);
-
     } catch (error) {
         console.log(error);
         res.status(500).json({message: "Something went wrong"});
