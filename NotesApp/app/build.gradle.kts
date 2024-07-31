@@ -70,6 +70,9 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
 
+    // Loader
+    implementation(libs.android.spinkit)
+
 }
 
 kapt {
