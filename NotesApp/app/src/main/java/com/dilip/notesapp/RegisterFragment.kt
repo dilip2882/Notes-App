@@ -20,6 +20,10 @@ class RegisterFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentRegisterBinding.inflate(inflater, container,false)
 
+        binding.btnSignUp.setOnClickListener {
+            findNavController().navigate(R.id.action_registerFragment_to_mainFragment2)
+        }
+
         binding.btnLogin.setOnClickListener {
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment2)
         }
