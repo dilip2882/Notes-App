@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="90dp"
                 android:text="App"
-                android:textColor="#27272E"
+                android:textColor="#E8353437"
                 android:textSize="80sp"
                 android:textStyle="bold" />
         </LinearLayout>
